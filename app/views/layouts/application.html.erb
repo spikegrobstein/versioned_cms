@@ -7,6 +7,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<h1>Sadistech</h1>
+
+<% unless flash[:notice].nil? %>
+<div id="flash_notice"><%= flash[:notice] %></div>
+<% end %>
 
 <%= yield %>
 
