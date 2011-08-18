@@ -8,3 +8,16 @@
 		[ reset ]
 	</div>
 <% end %>
+
+<fieldset>
+	<legend>Navigation Items [ <%= link_to '+ new', new_project_nav_item_path(@project) %>]</legend>
+	
+	<ul>
+		<% @project.nav_items.each do |nav_item| %>
+		<li>
+			<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
+		</li>
+		<% end %>
+	</ul>
+	
+</fieldset>
