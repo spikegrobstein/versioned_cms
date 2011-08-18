@@ -1,10 +1,6 @@
 class NavItemsController < ApplicationController
   before_filter :find_project
   
-  def index
-    @nav_items = @project.nav_items
-  end
-  
   def show
     redirect_to edit_project_nav_item_path(@project, params[:id])
   end
