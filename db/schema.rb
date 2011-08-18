@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817234935) do
+ActiveRecord::Schema.define(:version => 20110818001023) do
+
+  create_table "nav_items", :force => true do |t|
+    t.integer  "position"
+    t.string   "label"
+    t.string   "url"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"

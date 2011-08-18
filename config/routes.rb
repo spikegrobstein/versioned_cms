@@ -1,6 +1,10 @@
 SadistechAdmin::Application.routes.draw do
   
-  resources :projects
+  resources :projects do
+    resources :nav_items
+    # resources :news_tags
+    # resources :pages
+  end
   
   
   # The priority is based upon order of creation:
