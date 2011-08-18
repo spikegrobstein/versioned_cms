@@ -9,6 +9,8 @@ gem 'mysql2', '~> 0.2.6'
 
 gem 'thin'
 
+gem 'redcarpet'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
