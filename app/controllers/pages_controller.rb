@@ -2,6 +2,11 @@ class PagesController < ApplicationController
   
   before_filter :find_project
   
+  # this action will render the page and is useful for seeing what's going on.
+  def show
+    @page = @project.pages.where(:title => params[:id]).first
+  end
+  
   def new
     @page = @project.pages.build
   end
