@@ -26,7 +26,15 @@
 </fieldset>
 
 <fieldset>
-	<legend>Pages</legend>
+	<legend>Pages [ <%= link_to '+ new', new_project_page_path(@project) %>]</legend>
+	
+	<ul>
+		<% @project.pages.each do |page| %>
+		<li>
+			<%= link_to page.title, edit_project_page_path(@project, page) %>
+		</li>
+		<% end %>
+	</ul>
 </fieldset>
 
 <fieldset>
