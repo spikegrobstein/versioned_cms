@@ -1,0 +1,9 @@
+<h2>New Page (<%= @project.name %>)</h2>
+
+<% form_for [ @project, @page ] do |form| %>
+	<%= render :partial => form %>
+	
+	<div>
+		<%= form.submit 'Save' %>
+	</div>
+<% end %>
