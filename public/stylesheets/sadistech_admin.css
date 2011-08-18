@@ -1,0 +1,29 @@
+body {
+  font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  max-width: 800px;
+}
+
+form div {
+  padding: 5px 0;
+  vertical-align: top;
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
+  width: 125px;
+  float: left;
+}
+
+input, textarea {
+  width: 300px;
+  margin: 0;
+}
+
+textarea {
+  height: 100px;
+}
+
+fieldset legend {
+  font-weight: bold;
+}
