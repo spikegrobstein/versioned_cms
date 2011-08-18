@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818001023) do
+ActiveRecord::Schema.define(:version => 20110818004952) do
 
   create_table "nav_items", :force => true do |t|
     t.integer  "position"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20110818001023) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "nav_items", ["project_id"], :name => "index_nav_items_on_project_id"
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["project_id"], :name => "index_pages_on_project_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

@@ -7,9 +7,12 @@ class CreateNavItems < ActiveRecord::Migration
       t.string  :url # what it points to
       
       t.integer :project_id
+      
 
       t.timestamps
     end
+    
+    add_index :nav_items, :project_id
   end
 
   def self.down
