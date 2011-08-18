@@ -19,7 +19,7 @@ class NavItemsController < ApplicationController
     begin
       @nav_item.save!
       flash[:notice] = "Created new navigation item! w00t!"
-      redirect_to edit_project_nav_item_path(@project, @nav_item)
+      redirect_to edit_project_path(@project)
     rescue ActiveRecord::RecordInvalid
       render :action => :new
     end
@@ -36,7 +36,7 @@ class NavItemsController < ApplicationController
       @nav_item.update_attributes!(params[:nav_item])
       flash[:notice] = "Saved navigation item!"
       
-      redirect_to edit_project_nav_item_path(@project, @nav_item)
+      redirect_to edit_project_path(@project)
     rescue ActiveRecord::RecordInvalid
       render :action => :edit
     end
@@ -48,6 +48,6 @@ class NavItemsController < ApplicationController
     
     flash[:notice] = "Deleted Navigation item!"
     
-    redirect_to project_nav_items_path(@project)
+    redirect_to projects_path
   end
 end
