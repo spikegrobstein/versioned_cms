@@ -25,11 +25,11 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:id])
+    @project = Project.find_by_slug(params[:id])
   end
   
   def update
-    @project = Project.find(params[:id])
+    @project = Project.find_by_slug(params[:id])
     
     begin
       @project.update_attributes!(params[:project])
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
   end
   
   def destroy
-    @project = Project.find(params[:id])
+    @project = Project.find_by_slug(params[:id])
     @project.destroy
     
     flash[:notice] = "Deleted project!"
