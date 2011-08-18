@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   
   # this action will render the page and is useful for seeing what's going on.
   def show
-    @page = @project.pages.where(:title => params[:id]).first
+    @page = @project.pages.find_by_slug(params[:id])
   end
   
   def new
@@ -25,11 +25,11 @@ class PagesController < ApplicationController
   end
   
   def edit
-    @page = @project.pages.find(params[:id])
+    @page = @project.pages.find_by_slug(params[:id])
   end
   
   def update
-    @page = @project.pages.find(params[:id])
+    @page = @project.pages.find_by_slug(params[:id])
     
     begin
       @page.update_attributes!(params[:page])
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
   end
   
   def destroy
-    @page = @project.pages.find(params[:id])
+    @page = @project.pages.find_by_slug(params[:id])
     
     @page.destroy
     
