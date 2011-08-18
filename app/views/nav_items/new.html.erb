@@ -1,0 +1,9 @@
+<h2>Navigation Items for project <%= @project.name %></h2>
+
+<% form_for [ @project, @nav_item ] do |form| %>
+	<%= render :partial => form %>
+	
+	<div>
+		<%= form.submit 'Save' %>
+	</div>
+<% end %>
