@@ -1,51 +1,53 @@
 class NavItemsController < ApplicationController
+  before_filter :find_project
+  
   def index
-    @nav_items = NavItem.all
+    @nav_items = @project.nav_items
   end
   
   def show
-    redirect_to edit_nav_item_path(params[:id])
+    redirect_to edit_project_nav_item_path(@project, params[:id])
   end
   
   def new
-    @nav_item = NavItem.new
+    @nav_item = @project.nav_items.build
   end
   
   def create
-    @nav_item = NavItem.new(params[:nav_item])
+    @nav_item = @project.nav_items.build(params[:nav_item])
     
     begin
       @nav_item.save!
       flash[:notice] = "Created new navigation item! w00t!"
-      redirect_to edit_nav_item_path(@nav_item)
+      redirect_to edit_project_nav_item_path(@project, @nav_item)
     rescue ActiveRecord::RecordInvalid
       render :action => :new
     end
   end
   
   def edit
-    @nav_item = NavItem.find(params[:id])
+    @nav_item = @project.nav_items.find(params[:id])
   end
   
   def update
-    @nav_item = NavItem.find(params[:id])
+    @nav_item = @project.nav_items.find(params[:id])
     
     begin
       @nav_item.update_attributes!(params[:nav_item])
       flash[:notice] = "Saved navigation item!"
       
-      redirect_to edit_nav_item_path(@nav_item)
+      redirect_to edit_project_nav_item_path(@project, @nav_item)
     rescue ActiveRecord::RecordInvalid
       render :action => :edit
     end
   end
   
   def destroy
-    @nav_item = NavItem.find(params[:id])
+    @nav_item = @project.nav_items.find(params[:id])
     @nav_item.destroy
     
     flash[:notice] = "Deleted Navigation item!"
     
-    redirect_to nav_items_path
+    redirect_to project_nav_items_path(@project)
   end
 end

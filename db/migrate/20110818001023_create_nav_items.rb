@@ -6,7 +6,7 @@ class CreateNavItems < ActiveRecord::Migration
       t.string  :label # the way it's rendered
       t.string  :url # what it points to
       
-      t.integer :product_id
+      t.integer :project_id
 
       t.timestamps
     end

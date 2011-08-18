@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110818001023) do
     t.integer  "position"
     t.string   "label"
     t.string   "url"
-    t.integer  "product_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
