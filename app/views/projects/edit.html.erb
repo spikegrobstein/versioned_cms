@@ -1,13 +1,16 @@
 <h2>Edit Project</h2>
 
-<% form_for @project do |form| %>
-	<%= render :partial => form %>
+<fieldset>
+	<legend>Edit Project</legend>
+	<% form_for @project do |form| %>
+		<%= render :partial => form %>
 	
-	<div>
-		<%= form.submit 'Save' %>
-		[ reset ]
-	</div>
-<% end %>
+		<div>
+			<%= form.submit 'Save' %>
+			[ reset ]
+		</div>
+	<% end %>
+</fieldset>
 
 <fieldset>
 	<legend>Navigation Items [ <%= link_to '+ new', new_project_nav_item_path(@project) %>]</legend>
@@ -20,4 +23,12 @@
 		<% end %>
 	</ul>
 	
+</fieldset>
+
+<fieldset>
+	<legend>Pages</legend>
+</fieldset>
+
+<fieldset>
+	<legend>News Tags</legend>
 </fieldset>
