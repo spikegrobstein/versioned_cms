@@ -1,4 +1,6 @@
-<%= form_text_field form, :name %>
-<%= form_text_field form, :url %>
-<%= form_text_area form, :css %>
-<%= form_text_area form, :footer %>
+<%= form_text_field form, :name, :class => 'xlarge' %>
+<%= form_text_field form, :url, :class => 'xlarge' %>
+
+<%= form_text_area form, :css, :rows => 10, :class => 'xlarge' %>
+
+<%= form_text_area form, :footer, :rows => 10, :class => 'xlarge' %>

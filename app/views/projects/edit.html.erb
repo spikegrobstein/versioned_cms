@@ -1,42 +1,66 @@
-<h2>Edit Project</h2>
+<% extra_head do %>
+<script src="/javascripts/ace/build/src/mode-css.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/ace/build/src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
 
-<fieldset>
-	<legend>Edit Project</legend>
-	<% form_for @project do |form| %>
-		<%= render :partial => form %>
-	
-		<div>
-			<%= form.submit 'Save' %>
-			[ reset ]
-		</div>
-	<% end %>
-</fieldset>
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		var editor_field = $('.editor');
+		editor_field.attr('id', 'editor_5');
+		var editor = ace.edit(editor_field.attr('id'));
+		
+		var CssMode = require("ace/mode/javascript").Mode;
+		editor.getSession().setMode(new CssMode());
+	});
+</script>
+<% end %>
 
-<fieldset>
-	<legend>Navigation Items [ <%= link_to '+ new', new_project_nav_item_path(@project) %>]</legend>
-	
-	<ul>
-		<% @project.nav_items.each do |nav_item| %>
-		<li>
-			<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
-		</li>
-		<% end %>
-	</ul>
-	
-</fieldset>
+<div class="span14 columns">
+	<h2>Edit Project</h2>
+</div>
 
-<fieldset>
-	<legend>Pages [ <%= link_to '+ new', new_project_page_path(@project) %>]</legend>
-	
-	<ul>
-		<% @project.pages.each do |page| %>
-		<li>
-			<%= link_to page.title, edit_project_page_path(@project, page) %>
-		</li>
-		<% end %>
-	</ul>
-</fieldset>
+<div class="row">
+	<div class="span8 columns">
 
-<fieldset>
-	<legend>News Tags</legend>
-</fieldset>
+		<fieldset>
+			<legend>Edit Project</legend>
+			<% form_for @project do |form| %>
+				<%= render :partial => form %>
+	
+				<div class="actions">
+					<%= form.submit 'Save', :class => 'btn primary' %>
+					[ reset ]
+				</div>
+			<% end %>
+		</fieldset>
+	</div>
+	<div class="span8 columns">
+		<fieldset>
+			<legend>Navigation Items <span class="btn small"> <%= link_to '+ new', new_project_nav_item_path(@project) %></span></legend>
+	
+			<ul>
+				<% @project.nav_items.each do |nav_item| %>
+				<li>
+					<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
+				</li>
+				<% end %>
+			</ul>
+	
+		</fieldset>
+
+		<fieldset>
+			<legend>Pages <span class="btn small"> <%= link_to '+ new', new_project_page_path(@project) %></span></legend>
+	
+			<ul>
+				<% @project.pages.each do |page| %>
+				<li>
+					<%= link_to page.title, edit_project_page_path(@project, page) %>
+				</li>
+				<% end %>
+			</ul>
+		</fieldset>
+
+		<fieldset>
+			<legend>News Tags</legend>
+		</fieldset>
+	</div>
+</div>
