@@ -14,24 +14,21 @@
 </script>
 <% end %>
 
-<div class="span14 columns">
-	<h2>Edit Project</h2>
-</div>
-
 <div class="row">
 	<div class="span8 columns">
 
-		<fieldset>
-			<legend>Edit Project</legend>
+
 			<% form_for @project do |form| %>
-				<%= render :partial => form %>
+				<fieldset>
+					<legend>Edit Project</legend>
+					<%= render :partial => form %>
 	
-				<div class="actions">
-					<%= form.submit 'Save', :class => 'btn primary' %>
-					[ reset ]
-				</div>
+					<div class="actions">
+						<%= form.submit 'Save', :class => 'btn primary' %>
+						[ reset ]
+					</div>
+				</fieldset>
 			<% end %>
-		</fieldset>
 	</div>
 	<div class="span8 columns">
 		<fieldset>

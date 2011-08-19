@@ -28,6 +28,10 @@ fieldset legend {
   font-weight: bold;
 }*/
 
+legend {
+  font-weight: bold;
+}
+
 legend .btn {
   padding: 0px;
 }
