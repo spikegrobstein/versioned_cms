@@ -1,9 +1,12 @@
-<h2>New Project</h2>
 
 <% form_for @project do |form| %>
-	<%= render :partial => form %>
+	<fieldset>
+		<legend>New Project</legend>
+		<%= render :partial => form %>
 	
-	<div>
-		<%= form.submit 'Save ' %>
-	</div>
+		<div class="actions">
+			<%= form.submit 'Save', :class => 'btn primary' %>
+			<%= link_to raw('Cancel'), projects_path, :class => 'btn' %>
+		</div>
+	</fieldset>
 <% end %>
