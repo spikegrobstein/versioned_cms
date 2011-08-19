@@ -1,11 +1,27 @@
-<h2>Projects</h2>
+<h2>Projects <strong><%= link_to '+ new', new_project_path, :class => 'btn' %>
+</strong></h2>
 
-<%= link_to '+ new', new_project_path %>
-
-<ul>
-	<% @projects.each do |project| %>
-	<li>
-		<%= link_to project.name, edit_project_path(project) %>
-	</li>
-	<% end %>
-</ul>
+<table>
+	<thead>
+		<tr>
+			<th>Project Name</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each do |project| %>
+		<tr>
+			<td>
+				<%= link_to project.name, edit_project_path(project) %>
+			</td>
+			<td>
+				<%= link_to 'edit', edit_project_path(project), :class => 'btn' %>
+			</td>
+			<td>
+				<%= link_to 'preview', project_path(project), :class => 'btn' %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
