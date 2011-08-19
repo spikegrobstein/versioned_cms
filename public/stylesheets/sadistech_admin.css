@@ -41,3 +41,5 @@ legend .btn {
   width: 300px;
   height: 100px;
 }
+
+.btn.confirm{background-color:#ff64cd;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#ff9cdb), to(#ff64cd));background-image:-moz-linear-gradient(#0ffcdb, #ff64cd);background-image:-ms-linear-gradient(#ff9cdb, #ff64cd);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9cdb), color-stop(100%, #ff64cd));background-image:-webkit-linear-gradient(#ff9cdb, #ff64cd);background-image:-o-linear-gradient(#ff9cdb, #ff64cd);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0)";filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);background-image:linear-gradient(#ff9cdb, #ff64cd);color:#fff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);}.btn.primary:hover{color:#fff;}
