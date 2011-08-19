@@ -30,7 +30,10 @@
 <div style="height: 60px;"><!-- --></div>
 
 <% unless flash[:notice].nil? %>
-<div id="flash_notice"><%= flash[:notice] %></div>
+<div class="row container">
+	<div class="span16 column">
+	<div id="flash_notice" class="alert-message success"><%= flash[:notice] %></div>
+</div>
 <% end %>
 
 <div class="container">
