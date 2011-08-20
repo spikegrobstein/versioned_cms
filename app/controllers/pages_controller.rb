@@ -85,6 +85,14 @@ class PagesController < ApplicationController
       FileUtils.cp_r File.join(Rails.root, 'public', public_dir), destination_directory
     end
     
+    # symlink to a current directory
+    current_path = File.join(Rails.root, 'published', 'current')
+    if File.exists? current_path
+      FileUtils.rm current_path
+    end
+    
+    FileUtils.ln_s destination_directory, current_path
+    
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
   end
