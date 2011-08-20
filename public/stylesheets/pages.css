@@ -2,15 +2,14 @@ code {
   background-color: #ddd;
 }
 
-#footer p {
+.footer p {
   font-size: 0.8em;
   margin: 0;
 }
 
-#footer {
+.footer {
   width: 80%;
   
-  border-top: 1px solid #666;
   font-style: italic;
   text-align: center;
   margin: auto;

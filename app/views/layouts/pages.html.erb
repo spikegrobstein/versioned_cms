@@ -31,14 +31,35 @@
 			<div class="span12 columns">
 				
 			<%= yield %>
+			
+		</div>
+	</div>
 	
-			<div id="footer">
+	<div class="row">
+		<div class="span4 columns">
+			<div class="footer">
+				<!-- &copy;2002-2011 Sadistech.com -->
+			</div>
+		</div>
+		
+		<div class="span12 columns">
+			<div class="footer">
 				<%= markdown @project.footer %>
 			</div>
-			
 		</div>
 	</div>
 </div>
 
+<% if Rails.env.production? %>
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5702404-4");
+pageTracker._trackPageview();
+</script>
+<% end %>
 </body>
 </html>
