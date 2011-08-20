@@ -1,2 +1,12 @@
 <%= form_text_field form, :title, :class => 'xxlarge' %>
 <%= form_text_area form, :content, :class => 'xxlarge' %>
+
+<div class="clearfix">
+	<%= form.label :content_markup %>
+	<div class="input">
+		<select name="page[content_markup]" id="content_markup">
+			<option value="markdown" <% if @page.content_markup == 'markdown' %> selected="selected"<% end %>>Markdown</option>
+			<option value="html" <% if @page.content_markup == 'html' %> selected="selected"<% end %>>HTML</option>
+		</select>
+	</div>
+</div>

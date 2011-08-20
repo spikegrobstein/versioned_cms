@@ -1,5 +1,9 @@
 <div class="row">
 	<div class="span16 columns">
+		<% if @page.content_markup == 'markdown' or @page.content_markup.nil? %>
 		<%= markdown @page.content %>
+		<% elsif @page.content_markup == 'html' %>
+		<%= raw @page.content %>
+		<% end %>
 	</div>
 </div>

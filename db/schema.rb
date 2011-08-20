@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110820031222) do
+ActiveRecord::Schema.define(:version => 20110820034816) do
 
   create_table "nav_items", :force => true do |t|
     t.integer  "position"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110820031222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "content_markup", :default => "markdown"
   end
 
   add_index "pages", ["project_id"], :name => "index_pages_on_project_id"
