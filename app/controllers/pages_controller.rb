@@ -62,7 +62,12 @@ class PagesController < ApplicationController
     logger.debug("writing to directory: #{release_path}")
     
     Project.all.each do |project|
-      project_path = File.join(release_path, project.slug)
+      if project.name == 'sadistech'
+        project_path = release_path
+      else
+        project_path = File.join(release_path, project.slug)
+      end
+      
       logger.debug("writing file to: #{project_path}")
       FileUtils.makedirs(project_path)
       
