@@ -40,11 +40,11 @@
 					<tr>
 						<td>
 							<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
+							<em><%= nav_item.url %></em>
 						</td>
 						<td>
 							<%= link_to 'edit', edit_project_nav_item_path(@project, nav_item), :class => 'btn primary small' %>
-						</td>
-						<td>
+							<%= link_to raw('Go &rarr;'), nav_item_url(nav_item), :class => 'btn small' %>
 							<%= link_to 'x', project_nav_item_path(@project, nav_item), :class => 'btn confirm small' %>
 						</td>
 					</tr>
@@ -66,8 +66,7 @@
 					</td>
 					<td>
 						<%= link_to 'edit', edit_project_page_path(@project, page), :class => 'btn primary small' %>
-					</td>
-					<td>
+						<%= link_to 'preview', project_page_path(@project, page), :class => 'btn small' %>
 						<%= link_to 'x', project_page_path(@project, page), :class => 'btn confirm small'%>
 					</td>
 				</tr>
