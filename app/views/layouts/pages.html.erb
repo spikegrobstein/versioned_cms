@@ -26,10 +26,17 @@
 <div style="height: 60px;"><!-- --></div>
 
 <div class="container">
-	<%= yield %>
+	<div class="row">
+		<div class="span4 columns">&nbsp;</div>
+			<div class="span12 columns">
+				
+			<%= yield %>
 	
-	<div id="footer">
-		<%= markdown @project.footer %>
+			<div id="footer">
+				<%= markdown @project.footer %>
+			</div>
+			
+		</div>
 	</div>
 </div>
 
