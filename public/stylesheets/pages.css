@@ -1,11 +1,20 @@
+code {
+  background-color: #ddd;
+}
+
+#footer p {
+  font-size: 0.8em;
+  margin: 0;
+}
 
 #footer {
   width: 80%;
+  
   border-top: 1px solid #666;
-  font-size: 0.8em;
   font-style: italic;
   text-align: center;
   margin: auto;
   margin-top: 20px;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
