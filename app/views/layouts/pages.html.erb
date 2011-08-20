@@ -8,6 +8,13 @@
 	<%= stylesheet_link_tag 'bootstrap-1.0.0.min' %>
   <%= stylesheet_link_tag 'pages.css' %>
 
+	<% unless @project.css.nil? %>
+
+	<style type="text/css" media="screen">
+		<%= raw(@project.css) %>
+	</style>
+
+	<% end %>
 </head>
 <body>
 	
