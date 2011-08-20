@@ -12,7 +12,7 @@
 <ul id="navigation">
 	<% @project.nav_items.each do |nav_item| %>
 	<li>
-		<%= link_to nav_item.label, nav_item.url %>
+		<%= link_to nav_item.label, nav_item_url(nav_item) %>
 	</li>
 	<% end %>
 </ul>

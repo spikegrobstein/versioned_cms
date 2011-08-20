@@ -19,4 +19,16 @@ module ApplicationHelper
     render :partial => 'shared/form_text_area', :locals => { :form => form, :field => field, :options => options }
   end
   
+  def nav_item_url(nav_item)
+    return nav_item.url unless nav_item.url.match(/^::(.+?)::$/)
+    
+    page = $1
+    
+    if page == 'project_page'
+      return nav_item.project.url
+    else
+      raise "Unknown page!"
+    end
+  end
+  
 end
