@@ -1,12 +1,14 @@
 require 'FileUtils'
 
 class PagesController < ApplicationController
-  
+  layout 'application'
   before_filter :find_project
   
   # this action will render the page and is useful for seeing what's going on.
   def show
     @page = @project.pages.find_by_slug(params[:id])
+    
+    render :layout => 'pages'
   end
   
   def new
