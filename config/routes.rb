@@ -4,7 +4,10 @@ SadistechAdmin::Application.routes.draw do
     resources :nav_items
     # resources :news_tags
     resources :pages
+    
   end
+  
+  match "/pages/publish", :controller => 'pages', :action => 'publish'
   
   
   # The priority is based upon order of creation:

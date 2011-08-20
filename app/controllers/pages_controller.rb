@@ -1,3 +1,5 @@
+require 'FileUtils'
+
 class PagesController < ApplicationController
   
   before_filter :find_project
@@ -48,6 +50,33 @@ class PagesController < ApplicationController
     flash[:notice] = "Deleted page!"
     
     redirect_to edit_project_path(@project)
+  end
+  
+  # writes static files of all the project pages
+  def publish
+    destination_directory = File.join(Rails.root, 'published', '20110819064225')
+    
+    logger.debug("writing to directory: #{destination_directory}")
+    
+    Project.all.each do |project|
+      project_path = File.join(destination_directory, 'projects', project.slug)
+      logger.debug("writing file to: #{project_path}")
+      FileUtils.makedirs(project_path)
+      
+      @project = project
+      @project.pages.each do |page|
+        @page = page
+        page_path = File.join(project_path, "#{page.slug}.html")
+        logger.debug("writing page to: #{page_path}")
+        content = render_to_string(:action => :show)
+        f = File.new(page_path, 'w')
+        f.write(content)
+        f.close
+      end
+    end
+    
+    flash[:notice] = "Successfully published all content!"
+    redirect_to projects_path
   end
   
 end
