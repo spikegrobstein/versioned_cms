@@ -34,26 +34,46 @@
 		<fieldset>
 			<legend>Navigation Items <span class="btn small"> <%= link_to '+ new', new_project_nav_item_path(@project) %></span></legend>
 	
-			<ul>
-				<% @project.nav_items.each do |nav_item| %>
-				<li>
-					<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
-				</li>
-				<% end %>
-			</ul>
+			<table class="zebra-striped">
+				<tbody>
+					<% @project.nav_items.each do |nav_item| %>
+					<tr>
+						<td>
+							<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
+						</td>
+						<td>
+							<%= link_to 'edit', edit_project_nav_item_path(@project, nav_item), :class => 'btn primary small' %>
+						</td>
+						<td>
+							<%= link_to 'x', project_nav_item_path(@project, nav_item), :class => 'btn confirm small' %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
 	
 		</fieldset>
 
 		<fieldset>
 			<legend>Pages <span class="btn small"> <%= link_to '+ new', new_project_page_path(@project) %></span></legend>
 	
-			<ul>
+			<table class="zebra-striped">
+				<body>
 				<% @project.pages.each do |page| %>
-				<li>
-					<%= link_to page.title, edit_project_page_path(@project, page) %>
-				</li>
+				<tr>
+					<td>
+						<%= link_to page.title, edit_project_page_path(@project, page) %>
+					</td>
+					<td>
+						<%= link_to 'edit', edit_project_page_path(@project, page), :class => 'btn primary small' %>
+					</td>
+					<td>
+						<%= link_to 'x', project_page_path(@project, page), :class => 'btn confirm small'%>
+					</td>
+				</tr>
 				<% end %>
-			</ul>
+				</tbody>
+			</table>
 		</fieldset>
 
 		<fieldset>
