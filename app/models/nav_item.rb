@@ -4,4 +4,7 @@ class NavItem < ActiveRecord::Base
   
   acts_as_list :scope => :project
   
+  scope :primary, :conditions => 'is_secondary is null or is_secondary = 0'
+  scope :secondary, :conditions => { :is_secondary => true }
+  
 end

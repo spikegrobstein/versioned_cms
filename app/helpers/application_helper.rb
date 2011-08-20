@@ -19,6 +19,10 @@ module ApplicationHelper
     render :partial => 'shared/form_text_area', :locals => { :form => form, :field => field, :options => options }
   end
   
+  def form_check_box(form, field, options={})
+    render :partial => 'shared/form_check_box', :locals => { :form => form, :field => field, :options => options }
+  end
+  
   def nav_item_url(nav_item)
     return nav_item.url unless nav_item.url.match(/^::(.+?)::$/)
     

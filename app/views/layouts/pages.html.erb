@@ -9,17 +9,33 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<h1><%= @project.name %></h1>
+	
+<div class="topbar">
+	<div class="container fixed">
+		<h3><a class="logo" href="/#{@project.slug}"><%= @project.name %></a></h3>
 
-<ul id="navigation">
-	<% @project.nav_items.each do |nav_item| %>
-	<li>
-		<%= link_to nav_item.label, nav_item_url(nav_item) %>
-	</li>
-	<% end %>
-</ul>
+		<ul>
+			<% @project.nav_items.primary.each do |nav_item| %>
+			<li>
+				<%= link_to nav_item.label, nav_item_url(nav_item) %>
+			</li>
+			<% end %>
+		</ul>
+		
+		<ul class="nav secondary-nav">
+			<% @project.nav_items.secondary.each do |nav_item| %>
+			<li>
+				<%= link_to nav_item.label, nav_item_url(nav_item) %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
 
-<div id="content">
+<div style="height: 60px;"><!-- --></div>
+
+<div class="container">
+	<h1><%= @page.title %></h1>
 	<%= yield %>
 </div>
 
