@@ -58,8 +58,20 @@ class PagesController < ApplicationController
   def publish
     stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
     release_path = File.join(Rails.root, 'published', 'releases', stamp)
+    FileUtils.makedirs(release_path)
     
     logger.debug("writing to directory: #{release_path}")
+    
+    project_xml = Project.all.to_xml
+    project_json = Project.all.to_json
+    
+    f = File.new(File.join(release_path, 'projects.xml'), 'w')
+    f.write(project_xml)
+    f.close
+    
+    f = File.new(File.join(release_path, 'projects.json'), 'w')
+    f.write(project_json)
+    f.close
     
     Project.all.each do |project|
       if project.name == 'sadistech'
