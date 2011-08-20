@@ -24,25 +24,13 @@
 
 		<ul>
 			<% @project.nav_items.primary.each do |nav_item| %>
-			<li>
-			<% if nav_item.open_in_new_window? %>
-				<%= link_to nav_item.label, nav_item_url(nav_item), :target => '_blank' %>
-			<% else %>
-				<%= link_to nav_item.label, nav_item_url(nav_item) %>
-			<% end %>
-			</li>
+			<%= render :partial => '/layouts/nav_item', :object => nav_item %>
 			<% end %>
 		</ul>
 		
 		<ul class="nav secondary-nav">
 			<% @project.nav_items.secondary.each do |nav_item| %>
-			<li>
-			<% if nav_item.open_in_new_window? %>
-				<%= link_to nav_item.label, nav_item_url(nav_item), :target => '_blank' %>
-			<% else %>
-				<%= link_to nav_item.label, nav_item_url(nav_item) %>
-			<% end %>
-			</li>
+			<%= render :partial => '/layouts/nav_item', :object => nav_item %>
 			<% end %>
 		</ul>
 	</div>
