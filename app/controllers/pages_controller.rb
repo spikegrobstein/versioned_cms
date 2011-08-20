@@ -60,7 +60,7 @@ class PagesController < ApplicationController
     logger.debug("writing to directory: #{destination_directory}")
     
     Project.all.each do |project|
-      project_path = File.join(destination_directory, 'projects', project.slug)
+      project_path = File.join(destination_directory, project.slug)
       logger.debug("writing file to: #{project_path}")
       FileUtils.makedirs(project_path)
       
