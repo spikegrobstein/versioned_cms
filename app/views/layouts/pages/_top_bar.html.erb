@@ -1,6 +1,6 @@
 <div class="topbar">
 	<div class="container fixed">
-		<h3><a class="logo" href="/#{@project.slug}"><%= @project.name %></a></h3>
+		<h3><a class="logo" href="/<%= @project.slug %>"><%= @project.name %></a></h3>
 
 		<ul>
 		<%= render :partial => '/layouts/pages/nav_item', :collection => @project.nav_items.primary.all %>
