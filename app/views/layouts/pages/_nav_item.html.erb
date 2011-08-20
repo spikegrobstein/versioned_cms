@@ -1,0 +1,7 @@
+<li>
+<% if nav_item.open_in_new_window? %>
+	<%= link_to nav_item.label, nav_item_url(nav_item), :target => '_blank' %>
+<% else %>
+	<%= link_to nav_item.label, nav_item_url(nav_item) %>
+<% end %>
+</li>
