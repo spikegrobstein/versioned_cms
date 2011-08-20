@@ -18,23 +18,7 @@
 </head>
 <body>
 	
-<div class="topbar">
-	<div class="container fixed">
-		<h3><a class="logo" href="/#{@project.slug}"><%= @project.name %></a></h3>
-
-		<ul>
-			<% @project.nav_items.primary.each do |nav_item| %>
-			<%= render :partial => '/layouts/nav_item', :object => nav_item %>
-			<% end %>
-		</ul>
-		
-		<ul class="nav secondary-nav">
-			<% @project.nav_items.secondary.each do |nav_item| %>
-			<%= render :partial => '/layouts/nav_item', :object => nav_item %>
-			<% end %>
-		</ul>
-	</div>
-</div>
+<%= render :partial => '/layouts/top_bar' %>
 
 <div style="height: 60px;"><!-- --></div>
 
