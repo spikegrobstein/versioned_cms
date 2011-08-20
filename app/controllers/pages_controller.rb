@@ -81,6 +81,9 @@ class PagesController < ApplicationController
     end
     
     # once we've written every page, now we want to copy the CSS and JS out of the public dir and into the new published dir
+    %w( javascripts images stylesheets ).each do |public_dir|
+      FileUtils.cp_r File.join(Rails.root, 'public', public_dir), destination_directory
+    end
     
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
