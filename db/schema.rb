@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110820202154) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_secondary"
-    t.boolean  "open_in_new_window"
+    t.boolean  "open_in_new_window", :default => false
   end
 
   add_index "nav_items", ["project_id"], :name => "index_nav_items_on_project_id"
