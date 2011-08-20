@@ -1,13 +1,20 @@
 <div class="topbar">
 	<div class="container fixed">
-		<h3><a class="logo" href="/<%= @project.slug %>"><%= @project.name %></a></h3>
+		<div class="row">
+		<div class="span4 columns">
+			<h1><a class="logo" href="/">Sadistech</a></h1>
+		</div>
+		<div class="span12 columns">
+			<h2><a class="logo" href="/<%= @project.slug %>"><%= @project.name %></a></h2>
 
-		<ul>
-		<%= render :partial => '/layouts/pages/nav_item', :collection => @project.nav_items.primary.all %>
-		</ul>
+			<ul>
+			<%= render :partial => '/layouts/pages/nav_item', :collection => @project.nav_items.primary.all %>
+			</ul>
 		
-		<ul class="nav secondary-nav">
-		<%= render :partial => '/layouts/pages/nav_item', :collection => @project.nav_items.secondary.all %>
-		</ul>
+			<ul class="nav secondary-nav">
+			<%= render :partial => '/layouts/pages/nav_item', :collection => @project.nav_items.secondary.all %>
+			</ul>
+		</div>
+		</div>
 	</div>
 </div>
