@@ -112,8 +112,32 @@ class PagesController < ApplicationController
     
     FileUtils.ln_s release_path, current_path
     
+    # do some cleanup
+    cleanup_published_sites
+    
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
+  end
+  
+  protected
+  
+  # cleans up previously deployed copies of the site
+  def cleanup_published_sites(releases_to_keep=5)    
+    releases_path = File.join(Rails.root, 'published', 'releases')
+    
+    releases = Dir["#{releases_path}/*"].sort
+    
+    if releases.length <= releases_to_keep
+      logger.debug "there is only #{releases.length} releases. not cleaning up."
+      return
+    end
+    
+    # ok, if we got this far, then we need to do some cleanup
+    
+    # delete each release
+    releases[0, releases.length - releases_to_keep].each do |release|
+      FileUtils.rm_rf release
+    end
   end
   
 end
