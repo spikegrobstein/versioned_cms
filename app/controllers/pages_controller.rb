@@ -54,7 +54,8 @@ class PagesController < ApplicationController
   
   # writes static files of all the project pages
   def publish
-    destination_directory = File.join(Rails.root, 'published', '20110819064225')
+    stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
+    destination_directory = File.join(Rails.root, 'published', 'releases', stamp)
     
     logger.debug("writing to directory: #{destination_directory}")
     
@@ -68,12 +69,18 @@ class PagesController < ApplicationController
         @page = page
         page_path = File.join(project_path, "#{page.slug}.html")
         logger.debug("writing page to: #{page_path}")
+        
+        # render the page
         content = render_to_string(:action => :show)
+        
+        # write the data
         f = File.new(page_path, 'w')
         f.write(content)
         f.close
       end
     end
+    
+    # once we've written every page, now we want to copy the CSS and JS out of the public dir and into the new published dir
     
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
