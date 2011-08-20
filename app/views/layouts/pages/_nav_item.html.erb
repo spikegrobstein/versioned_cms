@@ -1,4 +1,4 @@
-<li>
+<li <%= raw 'class="active"' if nav_item.url == @page.slug %>>
 <% if nav_item.open_in_new_window? %>
 	<%= link_to nav_item.label, nav_item_url(nav_item), :target => '_blank' %>
 <% else %>
