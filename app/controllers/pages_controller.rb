@@ -73,7 +73,7 @@ class PagesController < ApplicationController
         logger.debug("writing page to: #{page_path}")
         
         # render the page
-        content = render_to_string(:action => :show)
+        content = render_to_string(:action => :show, :layout => 'pages')
         
         # write the data
         f = File.new(page_path, 'w')
