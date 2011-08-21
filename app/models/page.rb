@@ -23,16 +23,22 @@ class Page < ActiveRecord::Base
   end
   
   def content
+    return '' if current_version.nil?
     current_version.content
   end
   
   def content_markup
+    return '' if current_version.nil?
     current_version.content_markup
   end
   
   # forces a new version
   def update_version(field, new_value)
-    self.current_version = ContentVersion.new(field => new_value)
+    if current_version.new_record?
+      self.current_version[field] = new_value
+    else
+      self.current_version = content_versions.build(field => new_value)
+    end
   end
   
   def build_slug

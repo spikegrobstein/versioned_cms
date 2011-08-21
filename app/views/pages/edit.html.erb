@@ -13,4 +13,27 @@
 			</div>
 	<% end %>
 	</div>
+	
+	<div class="span4 offset4 columns">
+		
+		<h4>Old Versions</h4>
+		<table class="zebra-striped">
+			<tbody>
+			<% @page.content_versions.each do |v| %>
+			<tr>
+				<td>
+					<% if @page.current_version != v %>
+					<%= link_to v.created_at, project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small' %>
+					<% else %>
+					<span class="btn small primary"><%= v.created_at %></span>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to 'x', project_page_content_version_path(@project, @page, v), :method => :delete, :class => 'btn small confirm'%>
+				</td>
+			</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>

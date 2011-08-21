@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     @project = Project.find_by_slug(params[:project_id])
   end
   
+  def find_page
+    @page = Page.find_by_slug(params[:page_id])
+  end
+  
 end

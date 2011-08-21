@@ -1,0 +1,2 @@
+module ContentVersionsHelper
+end

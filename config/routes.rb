@@ -5,7 +5,9 @@ SadistechAdmin::Application.routes.draw do
   resources :projects do
     resources :nav_items
     # resources :news_tags
-    resources :pages
+    resources :pages do
+      resources :content_versions
+    end
     
   end
   
