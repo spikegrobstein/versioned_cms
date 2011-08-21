@@ -29,7 +29,11 @@
 					<% end %>
 				</td>
 				<td>
+					<% if @page.current_version != v %>
 					<%= link_to 'x', project_page_content_version_path(@project, @page, v), :method => :delete, :class => 'btn small confirm'%>
+					<% else %>
+					<!-- there should be a button here... but there's not. -->
+					<% end %>
 				</td>
 			</tr>
 			<% end %>
