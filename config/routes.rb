@@ -1,5 +1,7 @@
 SadistechAdmin::Application.routes.draw do
   
+  devise_for :users
+  
   resources :projects do
     resources :nav_items
     # resources :news_tags
