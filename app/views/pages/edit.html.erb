@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="span8 columns">
+	<div class="span12 columns">
 	<h2><%= @project.name %></h2>	
 		
 	<% form_for [ @project, @page ] do |form| %>
@@ -14,18 +14,20 @@
 	<% end %>
 	</div>
 	
-	<div class="span4 offset4 columns">
+	<div class="span4 columns">
 		
 		<table class="zebra-striped">
 			<thead>
 				<tr>
 					<th>Old Versions</th>
-					<th>&nbsp;</th>
+					<th>
+						<%= link_to 'show all', '#', :class => 'btn small show_all_btn' %>
+					</th>
 				</tr>
 			</thead>
 			<tbody class="edit_history">
 			<% @page.content_versions.each do |v| %>
-			<tr>
+			<tr class="<%= 'deleted' if v.deleted? %>">
 				<td>
 					<% if @page.current_version != v %>
 					<%= link_to time_ago_in_words(v.created_at), project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small', :title => v.created_at %>
