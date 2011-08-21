@@ -5,6 +5,8 @@ class ContentVersionsController < ApplicationController
   def update
     @page.current_version = @page.content_versions.find(params[:id])
     @page.save!
+    
+    flash[:notice] = "Changed current version to: #{@page.current_version.created_at}"
     redirect_to edit_project_page_path(@page.project, @page)
   end
   
@@ -15,6 +17,7 @@ class ContentVersionsController < ApplicationController
       @c.destroy
     end
     
+    flash[:notice] = "Deleted current version: #{@page.current_version.created_at}"
     redirect_to edit_project_page_path(@page.project, @page)
   end
   
