@@ -46,6 +46,6 @@ class NavItemsController < ApplicationController
     
     flash[:notice] = "Deleted Navigation item!"
     
-    redirect_to projects_path
+    redirect_to edit_project_path(@project)
   end
 end
