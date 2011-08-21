@@ -38,7 +38,7 @@ class Page < ActiveRecord::Base
   
   # forces a new version
   def update_version(field, new_value)
-    if current_version.new_record?
+    if not current_version.nil? and current_version.new_record?
       self.current_version[field] = new_value
     else
       self.current_version = content_versions.build(field => new_value)
