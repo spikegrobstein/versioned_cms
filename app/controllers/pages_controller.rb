@@ -113,7 +113,7 @@ class PagesController < ApplicationController
     FileUtils.ln_s release_path, current_path
     
     # do some cleanup
-    cleanup_published_sites
+    cleanup_published_sites PUBLISHING_CONFIG['releases_to_keep']
     
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
@@ -122,7 +122,9 @@ class PagesController < ApplicationController
   protected
   
   # cleans up previously deployed copies of the site
-  def cleanup_published_sites(releases_to_keep=5)    
+  def cleanup_published_sites(releases_to_keep=5)
+    return if releases_to_keep < 1
+     
     releases_path = File.join(PUBLISHING_CONFIG['location'], 'releases')
     
     releases = Dir["#{releases_path}/*"].sort
