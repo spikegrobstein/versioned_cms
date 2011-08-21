@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     begin
       @page.update_attributes!(params[:page])
       flash[:notice] = "Updated page!"
-      redirect_to edit_project_path(@project)
+      redirect_to edit_project_page_path(@project, @page)
     rescue ActiveRecord::RecordInvalid
       render :action => :edit
     end
