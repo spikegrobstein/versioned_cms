@@ -14,7 +14,8 @@ class ContentVersionsController < ApplicationController
     @c = @page.content_versions.find(params[:id])
     
     if @page.current_version != @c
-      @c.destroy
+      @c.deleted = true
+      @c.save!
     end
     
     flash[:notice] = "Deleted current version: #{@page.current_version.created_at}"
