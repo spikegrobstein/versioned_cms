@@ -4,6 +4,8 @@ class ContentVersionsController < ApplicationController
   # called when changing a Page's current_version
   def update
     @page.current_version = @page.content_versions.find(params[:id])
+    @page.current_version.deleted = false
+    @page.current_version.save!
     @page.save!
     
     flash[:notice] = "Changed current version to: #{@page.current_version.created_at}"
