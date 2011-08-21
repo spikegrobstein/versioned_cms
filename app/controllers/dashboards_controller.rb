@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   
   def show
     @projects = Project.all
-    @publications = Publication.all
+    @publications = Publication.order('published_at desc').all
   end
   
 end
