@@ -34,6 +34,7 @@
 					<% else %>
 					<span class="btn small primary"><%= time_ago_in_words v.created_at %></span>
 					<% end %>
+					<%= '*' if v.currently_published? %>
 				</td>
 				<td>
 					<% if @page.current_version != v %>
