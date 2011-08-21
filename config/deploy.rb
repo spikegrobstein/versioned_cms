@@ -1,10 +1,11 @@
 set :application, "sadistech_admin"
 set :repository,  "git@github.com:spikegrobstein/sadistech_admin.git"
 
-set :deploy_to, "/home/sadistech/admin"
 
 set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :deploy_to, "/home/sadistech/admin"
+set :deploy_via, :remote_cache
+set :branch, 'master'
 
 role :web, "sadistech.com"                          # Your HTTP server, Apache/etc
 role :app, "sadistech.com"                          # This may be the same as your `Web` server
