@@ -8,7 +8,7 @@ class Page < ActiveRecord::Base
   
   before_save :build_slug
   
-  validates_uniqueness_of :title, :slug
+  validates_uniqueness_of :title, :slug, :scope => :project_id
   
   def to_param
     self.slug
