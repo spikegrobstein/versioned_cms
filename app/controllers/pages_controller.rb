@@ -57,7 +57,7 @@ class PagesController < ApplicationController
   # writes static files of all the project pages
   def publish
     stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
-    release_path = File.join(Rails.root, 'published', 'releases', stamp)
+    release_path = File.join(PUBLISHING_CONFIG['location'], 'releases', stamp)
     FileUtils.makedirs(release_path)
     
     logger.debug("writing to directory: #{release_path}")
@@ -123,7 +123,7 @@ class PagesController < ApplicationController
   
   # cleans up previously deployed copies of the site
   def cleanup_published_sites(releases_to_keep=5)    
-    releases_path = File.join(Rails.root, 'published', 'releases')
+    releases_path = File.join(PUBLISHING_CONFIG['location'], 'releases')
     
     releases = Dir["#{releases_path}/*"].sort
     

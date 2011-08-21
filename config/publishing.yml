@@ -1,5 +1,8 @@
 development:
   location: 'published'
+  releases_to_keep: 5
   
 production:
   location: '/home/sadistech/public'
+  releases_to_keep: 5
+  

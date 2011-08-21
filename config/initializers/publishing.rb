@@ -1,0 +1,1 @@
+PUBLISHING_CONFIG = YAML.load_file("#{Rails.root}/config/publishing.yml")[Rails.env]
