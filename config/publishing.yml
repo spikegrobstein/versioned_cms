@@ -1,0 +1,5 @@
+development:
+  location: 'published'
+  
+production:
+  location: '/home/sadistech/public'
