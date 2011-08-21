@@ -15,6 +15,8 @@ set :use_sudo, false
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
+after 'deploy', 'deploy:symlink_database_yml'
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
