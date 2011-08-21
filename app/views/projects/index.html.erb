@@ -27,7 +27,7 @@
 				<%= link_to 'preview', project_path(project), :class => 'btn' %>
 			</td>
 			<td>
-				<%= link_to 'x', project_path(project), :class => 'btn confirm'%>
+				<%= link_to 'x', project_path(project), :confirm => "Are you sure that you want to delete the '#{project.name}' Project?", :class => 'btn confirm'%>
 			</td>
 		</tr>
 		<% end %>
