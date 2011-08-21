@@ -45,7 +45,7 @@
 						<td style="text-align: right;">
 							<%= link_to 'edit', edit_project_nav_item_path(@project, nav_item), :class => 'btn primary small' %>
 							<%= link_to raw('go &rarr;'), nav_item_url(nav_item), :class => 'btn small', :target => '_blank' %>
-							<%= link_to 'x', project_nav_item_path(@project, nav_item), :class => 'btn confirm small' %>
+							<%= link_to 'x', project_nav_item_path(@project, nav_item), :confirm => "Are you sure that you want to delete the '#{nav_item.label}' Navigation Item?", :method => 'delete', :class => 'btn confirm small' %>
 						</td>
 					</tr>
 					<% end %>
@@ -67,7 +67,7 @@
 					<td style="text-align: right;">
 						<%= link_to 'edit', edit_project_page_path(@project, page), :class => 'btn primary small' %>
 						<%= link_to 'preview', project_page_path(@project, page), :class => 'btn small', :target => '_blank' %>
-						<%= link_to 'x', project_page_path(@project, page), :class => 'btn confirm small'%>
+						<%= link_to 'x', project_page_path(@project, page), :confirm => "Are you sure that you want to delete the '#{page.title}' Page?", :class => 'btn confirm small'%>
 					</td>
 				</tr>
 				<% end %>
