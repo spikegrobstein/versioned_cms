@@ -9,6 +9,8 @@
 		<tr>
 			<th>#</th>
 			<th>Project Name</th>
+			<th>Pages</th>
+			<th>Nav Items</th>
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
 		</tr>
@@ -21,6 +23,12 @@
 			</td>
 			<td>
 				<%= link_to project.name, edit_project_path(project) %>
+			</td>
+			<td>
+				<%= project.pages.count %>
+			</td>
+			<td>
+				<%= project.nav_items.count %>
 			</td>
 			<td>
 				<%= link_to 'edit', edit_project_path(project), :class => 'btn' %>
