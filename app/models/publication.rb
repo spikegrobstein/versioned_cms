@@ -12,7 +12,7 @@ class Publication < ActiveRecord::Base
   end
   
   def build_slug
-    self.slug = self.title.parameterize
+    self.slug = self.published_at.to_s.parameterize
   end
 
   

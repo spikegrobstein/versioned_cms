@@ -14,8 +14,9 @@ class PublicationsController < ApplicationController
   
   # writes static files of all the project pages
   def publish
-    last_publication = Publication.current
-    publication = Publication.new
+    last_publication = Publication.current.first
+    
+    publication = Publication.new(:published_at => Time.now)
     
     stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
     release_path = File.join(PUBLISHING_CONFIG['location'], 'releases', stamp)
@@ -51,7 +52,9 @@ class PublicationsController < ApplicationController
         logger.debug("writing page to: #{page_path}")
 
         # render the page
-        content = render_to_string(:action => :show, :layout => 'pages')
+        content = render_to_string('pages/show' ,:layout => 'pages')
+
+        publication.content_versions << @page.current_version
 
         # write the data
         f = File.new(page_path, 'w')
@@ -75,7 +78,15 @@ class PublicationsController < ApplicationController
 
     # do some cleanup
     cleanup_published_sites PUBLISHING_CONFIG['releases_to_keep']
-
+    
+    unless last_publication.nil?
+      last_publication.is_current = false
+      last_publication.save!
+    end
+    
+    publication.is_current = true
+    publication.save!
+    
     flash[:notice] = "Successfully published all content!"
     redirect_to projects_path
   end
