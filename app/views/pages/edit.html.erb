@@ -16,22 +16,28 @@
 	
 	<div class="span4 offset4 columns">
 		
-		<h4>Old Versions</h4>
 		<table class="zebra-striped">
-			<tbody>
+			<thead>
+				<tr>
+					<th>Old Versions</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody class="edit_history">
 			<% @page.content_versions.each do |v| %>
 			<tr>
 				<td>
 					<% if @page.current_version != v %>
-					<%= link_to v.created_at, project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small' %>
+					<%= link_to time_ago_in_words(v.created_at), project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small', :title => v.created_at %>
 					<% else %>
-					<span class="btn small primary"><%= v.created_at %></span>
+					<span class="btn small primary"><%= time_ago_in_words v.created_at %></span>
 					<% end %>
 				</td>
 				<td>
 					<% if @page.current_version != v %>
 					<%= link_to 'x', project_page_content_version_path(@project, @page, v), :method => :delete, :class => 'btn small confirm'%>
 					<% else %>
+					&nbsp;
 					<!-- there should be a button here... but there's not. -->
 					<% end %>
 				</td>
