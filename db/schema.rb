@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821015811) do
+ActiveRecord::Schema.define(:version => 20110821031619) do
+
+  create_table "content_versions", :force => true do |t|
+    t.string   "content"
+    t.string   "content_markup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "nav_items", :force => true do |t|
     t.integer  "position"
@@ -27,12 +34,11 @@ ActiveRecord::Schema.define(:version => 20110821015811) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
-    t.text     "content"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.string   "content_markup", :default => "markdown"
+    t.integer  "current_version_id"
   end
 
   add_index "pages", ["project_id"], :name => "index_pages_on_project_id"
