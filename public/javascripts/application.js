@@ -3,8 +3,8 @@
 
 
 jQuery(function($) {
-  $('.show_all_btn').click(function() {
-    $(this).parent('table').toggleClass('show_all');
+  $('a.show_all_btn').click(function() {
+    $(this).parents('table').toggleClass('show_all');
     return false;
   });
 });
