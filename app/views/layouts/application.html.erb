@@ -19,21 +19,9 @@
 	<div class="container fixed">
 		<h3><a class="logo" href="/">Sadistech Admin</a></h3>
 		
-		<ul>
-			<li class="active">
-				<%= link_to 'Projects', projects_path %>
-			</li>
-			<li>
-				<%= link_to 'Publications', publications_path %>
-			</li>
-		</ul>
-		
 		<ul class="nav secondary-nav">
 			<li>
 				<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
-			</li>
-			<li>
-				<%= link_to 'publish', publications_path, :method => :post %>
 			</li>
 		</ul>
 	</div>
