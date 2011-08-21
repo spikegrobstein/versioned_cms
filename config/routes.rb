@@ -2,6 +2,8 @@ SadistechAdmin::Application.routes.draw do
   
   devise_for :users
   
+  resource :dashboard
+  
   resources :projects do
     resources :nav_items
     # resources :news_tags
@@ -15,7 +17,7 @@ SadistechAdmin::Application.routes.draw do
   
   #match "/pages/publish", :controller => 'pages', :action => 'publish'
   
-  root :to => 'projects#index'
+  root :to => 'dashboards#index'
   
   
   # The priority is based upon order of creation:
