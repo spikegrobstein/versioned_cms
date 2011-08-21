@@ -17,9 +17,9 @@ class PublicationsController < ApplicationController
   def publish
     last_publication = Publication.current.first
     
-    stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
+    stamp = Time.now.utc.strftime("%Y%m%d%H%M%S")
     
-    publication = Publication.new(:published_at => Time.now, :slug => stamp)
+    publication = Publication.new(:published_at => Time.now)
     
     release_path = File.join(PUBLISHING_CONFIG['location'], 'releases', stamp)
     FileUtils.makedirs(release_path)
@@ -115,6 +115,14 @@ class PublicationsController < ApplicationController
     # delete each release
     releases[0, releases.length - releases_to_keep].each do |release|
       FileUtils.rm_rf release
+      
+      logger.debug File.basename(release)
+      
+      # retire old deploy:
+      p = Publication.find_by_slug(File.basename(release))
+      next if p.nil?
+      p.is_offline = true
+      p.save!
     end
   end
   

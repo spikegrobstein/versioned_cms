@@ -60,7 +60,12 @@
 			<tbody>
 				<% @publications.each do |publication| %>
 				<tr>
-					<td><%= publication.published_at %></td>
+					<td>
+						<% if publication.is_offline? %>
+						x
+						<% end %>
+						<%= publication.published_at %>
+					</td>
 					<td><%= publication.content_versions.collect { |v| v.page.project_id }.uniq.count %></td>
 					<td><%= publication.content_versions.count %></td>
 				</tr>
