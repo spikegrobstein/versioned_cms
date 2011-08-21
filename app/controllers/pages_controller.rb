@@ -105,7 +105,7 @@ class PagesController < ApplicationController
     end
     
     # symlink to a current directory
-    current_path = File.join(Rails.root, 'published', 'current')
+    current_path = File.join(PUBLISHING_CONFIG['location'], 'current')
     if File.exists? current_path
       FileUtils.rm current_path
     end
