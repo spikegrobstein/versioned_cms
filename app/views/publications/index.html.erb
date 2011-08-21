@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="span14 columns">
+		
+		<table class="zebra-striped">
+			<thead>
+				<tr>
+					<th>Publications</th>
+					<th>Page Count</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @publications.each do |publication| %>
+				<tr>
+					<td><%= publication.published_at %></td>
+					<td><%= publication.content_versions.count %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		
+	</div>
+</div>
