@@ -11,7 +11,9 @@ SadistechAdmin::Application.routes.draw do
     
   end
   
-  match "/pages/publish", :controller => 'pages', :action => 'publish'
+  resources :publications
+  
+  #match "/pages/publish", :controller => 'pages', :action => 'publish'
   
   root :to => 'projects#index'
   

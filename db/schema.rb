@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821153914) do
+ActiveRecord::Schema.define(:version => 20110821175114) do
 
   create_table "content_versions", :force => true do |t|
     t.integer  "page_id"
@@ -55,6 +55,25 @@ ActiveRecord::Schema.define(:version => 20110821153914) do
     t.string   "slug"
     t.boolean  "use_bootstrap_css", :default => true
   end
+
+  create_table "publications", :force => true do |t|
+    t.string   "notes"
+    t.datetime "published_at"
+    t.string   "slug"
+    t.boolean  "is_current"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "published_content_versions", :force => true do |t|
+    t.integer  "content_version_id"
+    t.integer  "publication_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "published_content_versions", ["content_version_id"], :name => "index_published_content_versions_on_content_version_id"
+  add_index "published_content_versions", ["publication_id"], :name => "index_published_content_versions_on_publication_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
