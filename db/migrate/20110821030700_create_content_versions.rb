@@ -2,6 +2,7 @@ class CreateContentVersions < ActiveRecord::Migration
   def self.up
     create_table :content_versions do |t|
       
+      t.integer :page_id
       t.string :content
       t.string :content_markup
       

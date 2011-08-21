@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110821031619) do
 
   create_table "content_versions", :force => true do |t|
+    t.integer  "page_id"
     t.string   "content"
     t.string   "content_markup"
     t.datetime "created_at"
