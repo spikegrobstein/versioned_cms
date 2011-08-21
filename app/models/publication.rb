@@ -1,6 +1,6 @@
 class Publication < ActiveRecord::Base
   
-  scope :current, where(:is_current).limit(1)
+  scope :current, where(:is_current => true).limit(1)
   
   has_many :published_content_versions
   has_many :content_versions, :through => :published_content_versions
