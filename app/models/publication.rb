@@ -12,7 +12,11 @@ class Publication < ActiveRecord::Base
   end
   
   def build_slug
-    self.slug = self.published_at.to_s.parameterize
+    if published_at.nil?
+      self.published_at = Time.now
+    end
+    
+    self.slug = self.published_at.utc.strftime("%Y%m%d%H%M%S")
   end
 
   

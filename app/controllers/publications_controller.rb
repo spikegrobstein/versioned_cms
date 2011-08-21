@@ -17,9 +17,10 @@ class PublicationsController < ApplicationController
   def publish
     last_publication = Publication.current.first
     
-    publication = Publication.new(:published_at => Time.now)
-    
     stamp = Time.now.utc.strftime("%Y%m%d%H%M.%S")
+    
+    publication = Publication.new(:published_at => Time.now, :slug => stamp)
+    
     release_path = File.join(PUBLISHING_CONFIG['location'], 'releases', stamp)
     FileUtils.makedirs(release_path)
 
