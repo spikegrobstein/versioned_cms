@@ -1,5 +1,5 @@
 class ContentVersionsController < ApplicationController
-  before_filter :find_page
+  before_filter :find_project, :find_page
   
   # called when changing a Page's current_version
   def update

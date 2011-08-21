@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def find_page
-    @page = Page.find_by_slug(params[:page_id])
+    @page = @project.pages.find_by_slug(params[:page_id])
   end
   
 end
