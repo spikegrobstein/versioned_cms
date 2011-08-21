@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   
-  has_many :content_versions
+  has_many :content_versions, :order => 'created_at DESC'
   belongs_to :current_version, :class_name => 'ContentVersion'
   belongs_to :project
   
