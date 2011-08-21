@@ -17,7 +17,7 @@ SadistechAdmin::Application.routes.draw do
   
   #match "/pages/publish", :controller => 'pages', :action => 'publish'
   
-  root :to => 'dashboards#index'
+  root :to => 'dashboards#show'
   
   
   # The priority is based upon order of creation:

@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="span8 columns">
+
+		<h2>Projects</h2>
+
+		<div>
+			<%= link_to '+ new', new_project_path, :class => 'btn' %>
+		</div>
+
+		<table class="zebra-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Pages</th>
+					<th>Nav Items</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @projects.each_with_index do |project, i| %>
+				<tr>
+					<td>
+						<%= i+1 %>
+					</td>
+					<td>
+						<%= link_to project.name, edit_project_path(project) %>
+					</td>
+					<td>
+						<%= project.pages.count %>
+					</td>
+					<td>
+						<%= project.nav_items.count %>
+					</td>
+					<td>
+						<%= link_to 'x', project_path(project), :confirm => "Are you sure that you want to delete the '#{project.name}' Project?", :class => 'btn confirm'%>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="span8 columns">
+		
+		<h2>Publications</h2>
+		
+		<div>
+			<%= link_to 'publish', publications_path, :method => 'POST', :class => 'btn' %>
+		</div>
+		
+		<table class="zebra-striped">
+			<thead>
+				<tr>
+					<th>Publications</th>
+					<th>Project Count</th>
+					<th>Page Count</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @publications.each do |publication| %>
+				<tr>
+					<td><%= publication.published_at %></td>
+					<td><%= publication.content_versions.collect { |v| v.page.project_id }.uniq.count %></td>
+					<td><%= publication.content_versions.count %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

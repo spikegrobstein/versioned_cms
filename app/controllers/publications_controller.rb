@@ -93,7 +93,7 @@ class PublicationsController < ApplicationController
     publication.save!
     
     flash[:notice] = "Successfully published all content!"
-    redirect_to projects_path
+    redirect_to dashboard_path
   end
 
   def rollback(publication)
