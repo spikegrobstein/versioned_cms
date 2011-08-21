@@ -34,10 +34,16 @@
 
 <div style="height: 60px;"><!-- --></div>
 
-<% unless flash[:notice].nil? %>
+<% unless notice.nil? %>
 <div class="row container">
 	<div class="span16 column">
-	<div id="flash_notice" class="alert-message success"><%= flash[:notice] %></div>
+	<div id="flash_notice" class="alert-message success"><%= notice %></div>
+</div>
+<% end %>
+<% unless alert.nil? %>
+<div class="row container">
+	<div class="span16 column">
+	<div id="flash_notice" class="alert-message error"><%= error %></div>
 </div>
 <% end %>
 

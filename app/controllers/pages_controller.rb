@@ -1,6 +1,8 @@
 require 'fileutils'
 
 class PagesController < ApplicationController
+  before_filter :authenticate_user!
+  
   layout 'application'
   before_filter :find_project
   
