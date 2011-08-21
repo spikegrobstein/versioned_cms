@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821175114) do
+ActiveRecord::Schema.define(:version => 20110821210227) do
 
   create_table "content_versions", :force => true do |t|
     t.integer  "page_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110821175114) do
     t.boolean  "is_current"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_offline",   :default => false
   end
 
   create_table "published_content_versions", :force => true do |t|
