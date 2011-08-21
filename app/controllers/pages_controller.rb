@@ -1,4 +1,4 @@
-require 'FileUtils'
+require 'fileutils'
 
 class PagesController < ApplicationController
   layout 'application'
