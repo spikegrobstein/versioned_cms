@@ -1,10 +1,6 @@
 class PublicationsController < ApplicationController
   before_filter :authenticate_user!
   
-  def index
-    @publications = Publication.all
-  end
-  
   # new deploy
   def create
     publish
