@@ -31,10 +31,16 @@
 			<% end %>
 	</div>
 	<div class="span8 columns">
-		<fieldset>
-			<legend>Navigation Items <span class="btn small"> <%= link_to '+ new', new_project_nav_item_path(@project) %></span></legend>
 	
 			<table class="zebra-striped">
+				<thead>
+					<tr>
+						<th>Navigation Items</th>
+						<th colspan="3" style="text-align: right;">
+							<%= link_to '+ new', new_project_nav_item_path(@project), :class => 'btn small' %>
+						</th>
+					</tr>
+				</thead>
 				<tbody>
 					<% @project.nav_items.each do |nav_item| %>
 					<tr>
@@ -42,41 +48,59 @@
 							<%= link_to nav_item.label, edit_project_nav_item_path(@project, nav_item) %>
 							<em><%= nav_item.url %></em>
 						</td>
-						<td style="text-align: right;">
+						<td>
 							<%= link_to 'edit', edit_project_nav_item_path(@project, nav_item), :class => 'btn primary small' %>
+						</td>
+						<td>
 							<%= link_to raw('go &rarr;'), nav_item_url(nav_item), :class => 'btn small', :target => '_blank' %>
+						</td>
+						<td>
 							<%= link_to 'x', project_nav_item_path(@project, nav_item), :confirm => "Are you sure that you want to delete the '#{nav_item.label}' Navigation Item?", :method => 'delete', :class => 'btn confirm small' %>
 						</td>
 					</tr>
 					<% end %>
 				</tbody>
-			</table>
-	
-		</fieldset>
-
-		<fieldset>
-			<legend>Pages <span class="btn small"> <%= link_to '+ new', new_project_page_path(@project) %></span></legend>
-	
-			<table class="zebra-striped">
-				<body>
+				
+				<thead>
+					<tr>
+						<th>Pages</th>
+						<th colspan="3" style="text-align: right;">
+							<%= link_to '+ new', new_project_page_path(@project), :class => 'btn small' %>
+						</th>
+					</tr>
+				</thead>	
+				<tbody>
 				<% @project.pages.each do |page| %>
 				<tr>
 					<td>
 						<%= link_to page.title, edit_project_page_path(@project, page) %>
 					</td>
-					<td style="text-align: right;">
+					<td>
 						<%= link_to 'edit', edit_project_page_path(@project, page), :class => 'btn primary small' %>
+					</td>
+					<td>
 						<%= link_to 'preview', project_page_path(@project, page), :class => 'btn small', :target => '_blank' %>
+					</td>
+					<td>
 						<%= link_to 'x', project_page_path(@project, page), :confirm => "Are you sure that you want to delete the '#{page.title}' Page?", :class => 'btn confirm small'%>
 					</td>
 				</tr>
 				<% end %>
 				</tbody>
+				
+				<thead>
+					<tr>
+						<th>News Tags</th>
+						<th colspan="3" style="text-align: right;">
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
 			</table>
-		</fieldset>
 
-		<fieldset>
-			<legend>News Tags</legend>
-		</fieldset>
+
 	</div>
 </div>

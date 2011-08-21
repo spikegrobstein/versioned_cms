@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   
   default_scope order('title')
   
-  has_many :content_versions, :order => 'created_at DESC'
+  has_many :content_versions, :order => 'created_at DESC', :dependent => :destroy
   belongs_to :current_version, :class_name => 'ContentVersion'
   belongs_to :project
   
