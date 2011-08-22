@@ -33,6 +33,16 @@ class Page < ActiveRecord::Base
     current_version.content_markup
   end
   
+  def notes=(new_notes)
+    return if new_notes.blank?
+    
+    update_version(:notes, new_notes)
+  end
+  
+  def notes
+    ''
+  end
+  
   # forces a new version
   def update_version(field, new_value)
     if not current_version.nil? and current_version.new_record?

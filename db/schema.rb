@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821210227) do
+ActiveRecord::Schema.define(:version => 20110822025338) do
 
   create_table "content_versions", :force => true do |t|
     t.integer  "page_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110821210227) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "deleted",        :default => false
+    t.string   "notes"
   end
 
   create_table "nav_items", :force => true do |t|
