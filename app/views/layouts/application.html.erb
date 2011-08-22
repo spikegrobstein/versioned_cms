@@ -19,6 +19,14 @@
 	<div class="container fixed">
 		<h3><a class="logo" href="/">Sadistech Admin</a></h3>
 		
+		<% unless @project.nil? %>
+		<ul class="nav">
+			<li class="active">
+				<%= link_to @project.name, project_path(@project) %>
+			</li>
+		</ul>
+		<% end %>
+		
 		<ul class="nav secondary-nav">
 			<li>
 				<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
