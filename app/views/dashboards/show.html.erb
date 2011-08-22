@@ -46,25 +46,33 @@
 		<h2>Publications</h2>
 		
 		<div>
-			<%= link_to 'publish', publications_path, :method => 'POST', :class => 'btn' %>
+			<%= link_to 'publish', publications_path, :method => 'POST', :class => 'btn small' %>
 		</div>
 		
 		<table class="zebra-striped">
 			<thead>
 				<tr>
-					<th>Publications</th>
-					<th>Project Count</th>
-					<th>Page Count</th>
+					<th>
+						Publications
+						<% if Publication.offline.count > 0 %>
+							<%= link_to 'show_all', 'javascript:void()', :class => 'show_all_btn btn small' %>
+						<% end %>
+					</th>
+					<th>Projects</th>
+					<th>Pages</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @publications.each do |publication| %>
-				<tr>
+				<tr class="<%= 'offline' if publication.is_offline? %>">
 					<td>
-						<% if publication.is_offline? %>
-						x
-						<% end %>
-						<%= publication.published_at %>
+						<% if publication.is_current? %>
+							<span class="btn primary"><%= publication %></span>
+						<% elsif publication.is_offline? %>
+							<span class="btn disabled"><%= publication %></span>
+						<% else %>
+							<%= link_to publication, publication_path(publication), :method => :put, :class => 'btn' %>
+						<% end %>						
 					</td>
 					<td><%= publication.content_versions.collect { |v| v.page.project_id }.uniq.count %></td>
 					<td><%= publication.content_versions.count %></td>

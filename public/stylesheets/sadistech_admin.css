@@ -51,11 +51,13 @@ legend .btn {
   overflow-y: scroll;
 }*/
 
-table.show_all tr.deleted {
+table.show_all tr.deleted,
+table.show_all tr.offline {
   display: table-row;
 }
 
-tr.deleted {
+tr.deleted,
+tr.offline {
   display: none;
 }
 
