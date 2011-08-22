@@ -29,9 +29,9 @@
 			<tr class="<%= 'deleted' if v.deleted? %>">
 				<td>
 					<% if @page.current_version != v %>
-					<%= link_to time_ago_in_words(v.created_at), project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small', :title => v.created_at %>
+					<%= link_to v.to_s.truncate(20), project_page_content_version_path(@project, @page, v), :method => :put, :class => 'btn small', :title => v %>
 					<% else %>
-					<span class="btn small primary"><%= time_ago_in_words v.created_at %></span>
+					<span class="btn small primary"><%= v.to_s.truncate(20) %></span>
 					<% end %>
 					<%= '*' if v.currently_published? %>
 				</td>

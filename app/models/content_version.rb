@@ -1,6 +1,6 @@
 class ContentVersion < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
-  
+
   scope :deleted, where('deleted')
   scope :active, where('not deleted')
   
