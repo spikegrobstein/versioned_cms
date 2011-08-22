@@ -26,16 +26,7 @@ class PublicationsController < ApplicationController
 
     logger.debug("writing to directory: #{release_path}")
 
-    project_xml = Project.all.to_xml
-    project_json = Project.all.to_json
-
-    f = File.new(File.join(release_path, 'projects.xml'), 'w')
-    f.write(project_xml)
-    f.close
-
-    f = File.new(File.join(release_path, 'projects.json'), 'w')
-    f.write(project_json)
-    f.close
+    write_webservice_files Project.all, File.join(release_path, 'projects')
 
     Project.all.each do |project|
       if project.name == 'sadistech'
@@ -46,6 +37,8 @@ class PublicationsController < ApplicationController
 
       logger.debug("writing file to: #{project_path}")
       FileUtils.makedirs(project_path)
+      
+      write_webservice_files project, project_path
 
       @project = project
       @project.pages.each do |page|
@@ -138,6 +131,18 @@ class PublicationsController < ApplicationController
       p.is_offline = true
       p.save!
     end
+  end
+  
+  # creates json and xml files at the specified path
+  # given blah/bleh/blow => blah/bleh/blow.xml blah/bleh/blow.json
+  def write_webservice_files(object, path)
+    f = File.new(File.join("#{path}.xml"), 'w')
+    f.write(object.to_xml)
+    f.close
+    
+    f = File.new(File.join("#{path}.json"), 'w')
+    f.write(object.to_json)
+    f.close
   end
   
 end
