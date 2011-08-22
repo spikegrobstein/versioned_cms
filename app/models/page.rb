@@ -38,7 +38,7 @@ class Page < ActiveRecord::Base
     if not current_version.nil? and current_version.new_record?
       self.current_version[field] = new_value
     else
-      self.current_version = content_versions.build(field => new_value)
+      self.current_version = content_versions.build( self.current_version.attributes.merge({field, new_value}) )
     end
   end
   
