@@ -93,8 +93,22 @@ class PublicationsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  # change symlink to supplied publication
   def rollback(publication)
-    raise "Can't roll back, yet (#{publication.slug})"
+    # symlink to a previous directory
+    # first delete old symlink
+    current_path = File.join(PUBLISHING_CONFIG['location'], 'current')
+    if File.exists? current_path
+      FileUtils.rm current_path
+    end
+    # create new symlink
+    FileUtils.ln_s publication.path, current_path
+    
+    Publication.update_all(:is_current => false)
+    publication.is_current = true
+    publication.save
+    
+    redirect_to dashboard_path
   end
 
   # cleans up previously deployed copies of the site
