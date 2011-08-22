@@ -10,10 +10,7 @@ class Page < ActiveRecord::Base
   
   validates_uniqueness_of :title, :slug, :scope => :project_id
   
-  def to_param
-    self.slug
-  end
-  
+  # versioned convenience functions
   def content=(new_content)
     return if (not current_version.nil?) and (current_version.content == new_content)
     
@@ -43,6 +40,12 @@ class Page < ActiveRecord::Base
     else
       self.current_version = content_versions.build(field => new_value)
     end
+  end
+  
+  # slug stuff
+  
+  def to_param
+    self.slug
   end
   
   def build_slug
