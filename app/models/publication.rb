@@ -24,4 +24,8 @@ class Publication < ActiveRecord::Base
     self.notes.blank? ? self.slug : self.notes
   end
   
+  def path
+    File.join( PUBLISHING_CONFIG['location'], 'releases', self.slug )
+  end
+  
 end
