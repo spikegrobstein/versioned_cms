@@ -1,4 +1,5 @@
 class ContentVersion < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   
   scope :deleted, where('deleted')
   scope :active, where('not deleted')
@@ -8,6 +9,14 @@ class ContentVersion < ActiveRecord::Base
   
   belongs_to :page
   
+  
+  def to_s
+    if notes.blank?
+      time_ago_in_words(created_at)
+    else
+      notes
+    end
+  end
   
   def currently_published?
     not publications.find_by_is_current(true).nil?
