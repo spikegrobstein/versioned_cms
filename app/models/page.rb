@@ -47,14 +47,19 @@ class Page < ActiveRecord::Base
   def update_version(field, new_value)
     if not current_version.nil? and current_version.new_record?
       self.current_version[field] = new_value
+      return
+    end
+    
+    if current_version.nil?
+      attribs = {}.merge({ field, new_value })
     else
       attribs = {
         :content => self.current_version.content,
         :content_markup => self.current_version.content_markup
       }.merge({ field, new_value })
-      
-      self.current_version = content_versions.build( attribs )
     end
+    
+    self.current_version = content_versions.build( attribs )
   end
   
   # slug stuff
