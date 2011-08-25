@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   def new
     if @project.pages.count == 0
       @page = @project.pages.build({
-        :title => 'home'
+        :title => 'Home'
       })
     else
       @page = @project.pages.build
