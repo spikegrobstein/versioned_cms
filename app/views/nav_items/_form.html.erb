@@ -1,5 +1,12 @@
 <%= form_text_field form, :label %>
-<%= form_text_field form, :url %>
+
+<div class="clearfix">
+	<%= form.label :url %>
+	<div class="input">
+		<%= form.text_field :url %>
+		<%= select 'nav_item_url_select', '', project_pages(@project), :prompt => 'Pages...' %>
+	</div>
+</div>
 
 <%= form_check_box form, :is_secondary %>
 
