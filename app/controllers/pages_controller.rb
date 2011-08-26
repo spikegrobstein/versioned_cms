@@ -30,7 +30,7 @@ class PagesController < ApplicationController
       @page.save!
       
       flash[:notice] = "Created new page!"
-      redirect_to edit_project_path(@project)
+      redirect_to edit_project_page_path(@project, @page)
     rescue ActiveRecord::RecordInvalid
       render :action => :create
     end
