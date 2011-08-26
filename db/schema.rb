@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110822025338) do
+ActiveRecord::Schema.define(:version => 20110826160019) do
 
   create_table "content_versions", :force => true do |t|
     t.integer  "page_id"
-    t.string   "content"
+    t.text     "content"
     t.string   "content_markup"
     t.datetime "created_at"
     t.datetime "updated_at"
